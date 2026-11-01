@@ -1,0 +1,53 @@
+name: Monthly self-assessment
+description: Rate each skill from 1 (initial) to 4 (can teach it)
+title: "[Self-assessment] Month "
+labels: ["type:milestone"]
+body:
+  - type: dropdown
+    id: git
+    attributes:
+      label: Git & GitHub
+      options: ["1 Initial", "2 Guided", "3 Autonomous", "4 Can teach it"]
+  - type: dropdown
+    id: repro
+    attributes:
+      label: Reproducible code
+      options: ["1 Initial", "2 Guided", "3 Autonomous", "4 Can teach it"]
+  - type: dropdown
+    id: agents
+    attributes:
+      label: Agents & local LLMs
+      options: ["1 Initial", "2 Guided", "3 Autonomous", "4 Can teach it"]
+  - type: dropdown
+    id: recl
+    attributes:
+      label: Reciprocal learning
+      options: ["1 Initial", "2 Guided", "3 Autonomous", "4 Can teach it"]
+  - type: dropdown
+    id: loa
+    attributes:
+      label: Autonomy levels & explanations
+      options: ["1 Initial", "2 Guided", "3 Autonomous", "4 Can teach it"]
+  - type: dropdown
+    id: causal
+    attributes:
+      label: Causal reasoning
+      options: ["1 Initial", "2 Guided", "3 Autonomous", "4 Can teach it"]
+  - type: dropdown
+    id: deploy
+    attributes:
+      label: Deployment
+      options: ["1 Initial", "2 Guided", "3 Autonomous", "4 Can teach it"]
+  - type: dropdown
+    id: english
+    attributes:
+      label: Academic English
+      options: ["1 Initial", "2 Guided", "3 Autonomous", "4 Can teach it"]
+  - type: textarea
+    id: evidence
+    attributes:
+      label: Evidence (links to commits, PRs, notes, demo)
+  - type: textarea
+    id: next
+    attributes:
+      label: What I want to improve next month
