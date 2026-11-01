@@ -1,0 +1,31 @@
+name: Reading note
+description: One-page summary of a paper for RECLAIM
+title: "[Reading] "
+labels: ["type:reading"]
+body:
+  - type: input
+    id: reference
+    attributes:
+      label: Full reference (with DOI)
+    validations:
+      required: true
+  - type: textarea
+    id: question
+    attributes:
+      label: Research question
+  - type: textarea
+    id: method
+    attributes:
+      label: Method
+  - type: textarea
+    id: finding
+    attributes:
+      label: Main finding
+  - type: textarea
+    id: limitation
+    attributes:
+      label: Main limitation
+  - type: textarea
+    id: reclaim
+    attributes:
+      label: Possible application to RECLAIM
