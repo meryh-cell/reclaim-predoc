@@ -1,0 +1,7 @@
+journey_id,route_id,duration_min,pm25_ug_m3
+J01,J01_A,10,28
+J01,J01_B,13,16
+J01,J01_C,18,10
+J02,J02_A,12,25
+J02,J02_B,17,14
+J02,J02_C,20,8
