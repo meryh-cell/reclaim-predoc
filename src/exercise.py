@@ -23,17 +23,26 @@ def find_best_route(routes, journey_id, max_extra_minutes):
 
 def main():
     print("--- RECLAIM EXERCISE EXECUTION (Refactored) ---")
-    
-    
+
     routes, feedback = load_data()
+
     max_extra = feedback.loc[0, 'max_extra_minutes']
+    remember = bool(feedback.loc[0, 'remember_for_next_journey'])
 
-    j01_fastest, j01_best = find_best_route(routes, 'J01', max_extra)
-    print(f"J01 Before Feedback (Fastest): Route {j01_fastest['route_id']}, Duration: {j01_fastest['duration_min']} min, PM2.5: {j01_fastest['pm25_ug_m3']} ug/m3")
-    print(f"J01 After Feedback: Route {j01_best['route_id']}, Duration: {j01_best['duration_min']} min, PM2.5: {j01_best['pm25_ug_m3']} ug/m3")
+    j01_fastest, j01_best = find_best_route(
+        routes, 'J01', max_extra
+    )
 
-    _, j02_best = find_best_route(routes, 'J02', max_extra)
-    print(f"J02 With Stored Preference: Route {j02_best['route_id']}, Duration: {j02_best['duration_min']} min, PM2.5: {j02_best['pm25_ug_m3']} ug/m3")
+    print(f"J01 Before Feedback: {j01_fastest['route_id']}")
+    print(f"J01 After Feedback: {j01_best['route_id']}")
 
+    if remember:
+        j02_extra = max_extra
+    else:
+        j02_extra = 0
+
+    _, j02_best = find_best_route(routes, 'J02', j02_extra)
+
+    print(f"J02: {j02_best['route_id']}")
 if __name__ == "__main__":
     main()
