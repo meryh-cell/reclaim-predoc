@@ -25,7 +25,7 @@ def test_find_best_route():
             "pm25_ug_m3": 5
         }
     ])
-
+      
     fastest, best = find_best_route(routes, "J01", 5)
 
     assert fastest["route_id"] == "R1"
@@ -79,3 +79,23 @@ def test_find_best_route_with_real_data():
 
     assert fastest["route_id"] == "J01_A"
     assert best["route_id"] == "J01_C"
+
+
+
+def test_remember_preference():
+        project_root = Path(__file__).resolve().parents[1]
+        
+        routes_path = project_root / "src" / "routes.csv"
+        routes, _ = load_data(routes_path, project_root / "src" / "feedback.csv")
+        routes = pd.DataFrame([
+        {"journey_id": "J02", "route_id": "J02_A", "duration_min": 12, "pm25_ug_m3": 25},
+        {"journey_id": "J02", "route_id": "J02_B", "duration_min": 17, "pm25_ug_m3": 14},
+    ])
+
+        # Without remembering the preference: choose the fastest route
+        _, without_memory = find_best_route(routes, "J02", 0)
+        assert without_memory["route_id"] == "J02_A"
+
+        # With remembering the preference: choose the cleaner route
+        _, with_memory = find_best_route(routes, "J02", 5)
+        assert with_memory["route_id"] == "J02_B"
