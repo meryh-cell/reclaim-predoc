@@ -1,3 +1,4 @@
+
 import pandas as pd
 
 def load_data(routes_path='src/routes.csv', feedback_path='src/feedback.csv'):
@@ -12,9 +13,7 @@ def find_best_route(routes, journey_id, max_extra_minutes):
         return None
 
     fastest = j_data.loc[j_data['duration_min'].idxmin()]
-
     limit_duration = fastest['duration_min'] + max_extra_minutes
-
     eligible = j_data[j_data['duration_min'] <= limit_duration]
 
     best_route = eligible.sort_values(
@@ -27,6 +26,7 @@ def main():
     print("--- RECLAIM EXERCISE EXECUTION (Refactored) ---")
 
     routes, feedback = load_data()
+
     max_extra = feedback.loc[0, 'max_extra_minutes']
     remember = bool(feedback.loc[0, 'remember_for_next_journey'])
 
@@ -49,7 +49,6 @@ def main():
     _, j02_best = find_best_route(routes, 'J02', j02_extra)
 
     print(f"J02 With Stored Preference: Route {j02_best['route_id']}")
-
 
 if __name__ == "__main__":
     main()
